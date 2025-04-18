@@ -4,6 +4,11 @@ body {
 
 .bg-body-tertiary.my-nav-bg {
   background-color: rgb(20, 20, 20) !important;
+  padding-top: 20px;
+}
+
+.my-nav-color {
+  padding-left: 20px !important;
 }
 
 .my-nav-color a {

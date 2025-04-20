@@ -3,11 +3,12 @@ import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import MovieCard from '../MovieCard/MovieCard';
+import './PopularMovieSlide.style.css';
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 8,
+    items: 6,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -20,17 +21,19 @@ const responsive = {
 };
 
 const PopularMovieSlide = () => {
-  const { data, isLoding, isError, error } = usePopularMoviesQuery();
-  if (isLoding) {
-    return <h1>Loding....</h1>;
-  }
-  if (isError) {
-    return <Alert variant="danger">{error.message}</Alert>;
-  }
+  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+
+  console.log('[디버깅] 전체 데이터:', data);
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <div>{error.message}</div>;
+
+  const hasResults = data?.results?.length > 0;
+
   return (
     <div>
       <h3>Popular Movies</h3>
-      {data?.results?.length > 0 && (
+      {hasResults ? (
         <Carousel
           infinite={true}
           centerMode={true}
@@ -39,11 +42,12 @@ const PopularMovieSlide = () => {
           responsive={responsive}
         >
           {data.results.map((movie, index) => (
-            <div key={index}>{movie.title}</div>
+            <MovieCard key={index} movie={movie} />
           ))}
         </Carousel>
+      ) : (
+        <p>데이터가 없습니다.</p>
       )}
-      ;
     </div>
   );
 };

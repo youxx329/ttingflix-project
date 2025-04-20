@@ -2,7 +2,7 @@ import React from 'react';
 import Banner from './components/Banner/Banner';
 import PopularMovieSlide from './components/PopularMovieSlide/PopularMovieSlide';
 import UpcomingSlide from './components/UpcomingMovieSlide/UpcomingMovieSlide';
-import TopRatedSlide from './components/TopRatedMovieSlide/TopRatedMovieSlide';
+import TopRatedSlide from './components/TopRatedMovieSlide_temp/TopRatedMovieSlide';
 
 // 1. 배너 => popular 영화를 들고와서 첫 번째 아이템을 보여주자
 // 2. popular movie

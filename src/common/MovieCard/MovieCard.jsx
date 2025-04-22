@@ -17,20 +17,14 @@ const MovieCard = ({ movie }) => {
     return genreNameList;
   };
 
-  const getAgeImageSrc = (age) => {
-    switch (age) {
-      case 12:
-        return '/public/ratings/12.png';
-      case 15:
-        return '/public/ratings/15.png';
-      case 19:
-        return '/public/ratings/19.png';
-      case 'ALL':
-        return '/public/ratings/ALL.png';
-      default:
-        return '/public/ratings/icon_ratings_KR_All_en.png';
-    }
+  const getAgeImageSrc = (movie) => {
+    const isAdult = movie.adult;
+
+    if (isAdult) return '/ratings/19.png';
+    else return '/ratings/12.png'; // or ALL.png
   };
+
+  console.log(movie);
 
   return (
     <div
@@ -47,7 +41,7 @@ const MovieCard = ({ movie }) => {
         <AddButton movie={movie} />
         <div>
           <img
-            src={getAgeImageSrc(movie.age)}
+            src={getAgeImageSrc(movie)}
             alt="관람등급"
             className="age-rating-icon"
           />

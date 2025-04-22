@@ -24,8 +24,6 @@ const MovieCard = ({ movie }) => {
     else return '/ratings/12.png'; // or ALL.png
   };
 
-  console.log(movie);
-
   return (
     <div
       style={{

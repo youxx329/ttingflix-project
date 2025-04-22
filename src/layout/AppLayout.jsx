@@ -10,6 +10,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const AppLayout = () => {
   const [keyword, setKeyword] = useState('');
@@ -18,6 +19,9 @@ const AppLayout = () => {
   const searchByKeyword = (event) => {
     event.preventDefault();
     // url을 바꿔주기
+    if (!keyword.trim()) return;
+    navigate(`/movies?q=${keyword}`);
+    setKeyword('');
 
     if (!keyword.trim()) {
       // 입력값이 공백이거나 비어있으면 아무 동작 안함
@@ -29,6 +33,8 @@ const AppLayout = () => {
   };
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,10 +45,17 @@ const AppLayout = () => {
     return () => window.removeEventListener('scroll', handleScroll); // cleanup
   }, []);
 
+  // 페이지 이동 시 메뉴 닫기
+  useEffect(() => {
+    setExpanded(false);
+  }, [location]);
+
   return (
     <div>
       <Navbar
         expand="lg"
+        expanded={expanded}
+        onToggle={() => setExpanded((prev) => !prev)}
         className={`bg-body-tertiary my-nav-bg Navbar ${
           isScrolled ? 'scrolled' : ''
         }`}

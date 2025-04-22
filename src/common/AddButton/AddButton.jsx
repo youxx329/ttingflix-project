@@ -14,11 +14,9 @@ const AddButton = ({ movie }) => {
 
   return (
     <button className="add-btn" onClick={toggleFavorite}>
-      {isLiked ? (
-        <FaCheck size="24" color="#fff" />
-      ) : (
-        <AiOutlinePlus size="24" color="#fff" />
-      )}
+      <span className="icon-wrapper">
+        {isLiked ? <FaCheck /> : <AiOutlinePlus />}
+      </span>
     </button>
   );
 };

@@ -20,15 +20,15 @@ const MovieCard = ({ movie }) => {
   const getAgeImageSrc = (age) => {
     switch (age) {
       case 12:
-        return '/src/common/MovieCard/imges/icon_ratings_KR_12_en.png';
+        return '/public/ratings/12.png';
       case 15:
-        return '/src/common/MovieCard/imges/icon_ratings_KR_15_en.png';
+        return '/public/ratings/15.png';
       case 19:
-        return '/src/common/MovieCard/imges/icon_ratings_KR_R_en.png';
+        return '/public/ratings/19.png';
       case 'ALL':
-        return '/src/common/MovieCard/imges/icon_ratings_KR_All_en.png';
+        return '/public/ratings/ALL.png';
       default:
-        return '/src/common/MovieCard/imges/icon_ratings_KR_All_en.png';
+        return '/public/ratings/icon_ratings_KR_All_en.png';
     }
   };
 

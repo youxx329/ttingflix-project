@@ -1,6 +1,6 @@
 .banner {
   width: 100vw;
-  height: 100vh; /* 또는 고정 비율로 height: 70vh; 등도 OK */
+  height: 100vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

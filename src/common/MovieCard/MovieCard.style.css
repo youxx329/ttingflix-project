@@ -1,5 +1,5 @@
 .movie-card {
-  width: 220px;
+  width: 260px;
   height: 390px;
   background-size: cover;
   cursor: pointer;
@@ -32,4 +32,35 @@
 }
 .overlay .badge {
   margin-right: 8px !important;
+}
+
+.movie-card-genre {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.genre-style {
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.age-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #000;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
+.age-rating-icon {
+  width: 28px;
+  height: auto;
+  border-radius: 4px;
 }

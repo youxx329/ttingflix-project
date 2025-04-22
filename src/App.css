@@ -1,11 +1,26 @@
 body {
-  background: #000 !important;
+  background-image: linear-gradient(180deg, #141414) !important;
   color: #fff !important;
 }
 
 .bg-body-tertiary.my-nav-bg {
-  background: #000 !important;
-  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 68px;
+  padding: 0 40px;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  background-color: transparent !important;
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 10%,
+    transparent
+  );
+}
+
+.bg-body-tertiary.my-nav-bg.scrolled {
+  background-color: #000 !important;
 }
 
 .my-nav-color {
@@ -14,7 +29,7 @@ body {
 
 .my-nav-color a {
   color: #fff !important;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .btn-orange {
@@ -29,6 +44,6 @@ body {
 
 @media (min-width: 1500px) {
   body {
-    padding: 0 60px;
+    /* padding: 0 60px; */
   }
 }

@@ -5,6 +5,7 @@ import NotFoundPage from './NotFoundPage.jsx/NotFoundPage';
 import Homepage from './pages/Homepage/Homepage';
 import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
 import MoviePage from './pages/Movies/MoviePage';
+import FavoritesMoviePage from './pages/FavoritesMovie/FavoritesMoviePage';
 
 // 홈페이지 /
 // 영화 전체 보여주는 페이지 (서치 기능) /movies
@@ -23,6 +24,7 @@ function App() {
               <Route index element={<MoviePage />} />
               <Route path=":id" element={<MovieDetailPage />} />
             </Route>
+            <Route path="favorites" element={<FavoritesMoviePage />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />

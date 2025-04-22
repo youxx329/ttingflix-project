@@ -1,0 +1,14 @@
+.content-wrap {
+  padding: 100px 48px;
+}
+
+.no-result-box {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 44px;
+}

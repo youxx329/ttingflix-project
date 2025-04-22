@@ -1,4 +1,8 @@
 .carousel-container {
   overflow: hidden;
-  height: 440px;
+}
+
+.slide-tit {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }

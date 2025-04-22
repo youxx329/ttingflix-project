@@ -1,9 +1,10 @@
 .movie-card {
   width: 220px;
-  height: 330px;
+  height: 390px;
   background-size: cover;
   cursor: pointer;
   transition: 0.5s;
+  border-radius: 6px;
 }
 
 .overlay {
@@ -16,6 +17,7 @@
   font-weight: bold;
   overflow-wrap: break-word;
   padding: 20px;
+  border-radius: 6px;
 }
 .overlay:hover {
   opacity: 1;

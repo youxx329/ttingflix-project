@@ -1,4 +1,10 @@
 .carousel-container {
   overflow: hidden;
-  height: 440px;
+}
+
+.movie-slide {
+  position: relative;
+  z-index: 2;
+  margin-top: -250px;
+  padding: 0 60px;
 }

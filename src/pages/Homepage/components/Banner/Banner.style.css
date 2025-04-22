@@ -1,7 +1,13 @@
 .banner {
-  height: 56vh;
+  width: 100vw;
+  height: 100vh; /* 또는 고정 비율로 height: 70vh; 등도 OK */
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .banner::before {
@@ -9,7 +15,7 @@
   background: linear-gradient(to top, black, transparent);
   position: absolute;
   left: 0;
-  height: 56vh;
+  /* height: 56vh; */
   width: 100%;
 }
 
@@ -19,7 +25,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .banner-text-area > * {

@@ -8,7 +8,7 @@ const MovieSlider = ({ title, movies, responsive }) => {
   const hasResults = movies?.length > 0;
   return (
     <div>
-      <h3>{title}</h3>
+      <h3 className='slide-tit'>{title}</h3>
       {hasResults ? (
         <Carousel
           infinite={true}

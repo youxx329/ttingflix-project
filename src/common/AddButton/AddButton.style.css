@@ -2,35 +2,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.375rem;
-  height: 2.375rem;
+  width: 2rem;
+  height: 2rem;
   background-color: rgba(255, 255, 255, 0.048);
   border-radius: 50%;
   cursor: pointer;
   transition: 0.2s ease;
-  border: 2px solid #b1b0b0;
-  margin-bottom: 20px;
-}
-.add-btn path {
-  color: #fff;
+  border: 0.125rem solid #b1b0b0;
+  margin-bottom: 1.25rem;
 }
 /* .add-btn svg {
-  height: 23px;
-  width: 23px;
+  height: 1.4375rem;
+  width: 1.4375rem;
 } */
 
 .add-btn:hover {
-  border: 2px solid #fff;
+  border: 0.125rem solid #fff;
   background-color: #636262;
 }
 
 .add-btn svg {
-  font-size: 24px;
+  font-size: 2rem;
   vertical-align: middle;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .add-btn svg {
-    font-size: 32px;
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
   }
 }

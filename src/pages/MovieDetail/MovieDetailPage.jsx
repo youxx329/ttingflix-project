@@ -4,6 +4,7 @@ import { useMovieDetailQuery } from '../../hooks/useMovieDetailQuery';
 import './MovieDetailPage.style.css';
 import { useMovieCreditsQuery } from '../../hooks/useMovieCredits';
 import { useMovieReviewsQuery } from '../../hooks/useMovieReviewsQuery.js';
+import ReviewItem from './ReviewItem.jsx';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -12,6 +13,12 @@ const MovieDetailPage = () => {
     useMovieCreditsQuery(id);
   const { data: reviewsData, isLoading: reviewsLoading } =
     useMovieReviewsQuery(id);
+  const getAgeImageSrc = (movie) => {
+    const isAdult = movie.adult;
+
+    if (isAdult) return '/ratings/19.png';
+    else return '/ratings/12.png'; // or ALL.png
+  };
 
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <div>{error.message}</div>;
@@ -35,13 +42,22 @@ const MovieDetailPage = () => {
 
       <div className="movie-info-section">
         <img
+          className="movie-info-img"
           src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
           alt={movie.title}
         />
         <div className="info-box">
           <h2>{movie.title}</h2>
+          <p>
+            <img
+              src={getAgeImageSrc(movie)}
+              alt="관람등급"
+              className="age-rating-icon"
+            />
+          </p>
+          <p>{movie.overview}</p>
           <div className="cast-list">
-            <div>출연진:</div>
+            <strong>출연:</strong>
             {creditData.cast.slice(0, 3).map((person) => (
               <div key={person.name}>
                 <p>
@@ -51,13 +67,7 @@ const MovieDetailPage = () => {
             ))}
           </div>
           <p>
-            <strong>줄거리:</strong> {movie.overview}
-          </p>
-          <p>
             <strong>장르:</strong> {movie.genres.map((g) => g.name).join(', ')}
-          </p>
-          <p>
-            <strong>관람가:</strong> {movie.adult ? '청불' : '전체관람가'}
           </p>
           <p>
             <strong>평점:</strong> {movie.vote_average}
@@ -72,18 +82,18 @@ const MovieDetailPage = () => {
       </div>
 
       <div className="review-section">
-        <h3>리뷰</h3>
+        <h3>Reviews</h3>
         {reviewsLoading ? (
           <p>리뷰 로딩중...</p>
         ) : (
           <div className="review-box">
             {reviewsData.results.length > 0 ? (
               reviewsData.results.map((review) => (
-                <div key={review.id}>
-                  <p>
-                    <strong>{review.author}</strong>: {review.content}
-                  </p>
-                </div>
+                <ReviewItem
+                  key={review.id}
+                  author={review.author}
+                  content={review.content}
+                />
               ))
             ) : (
               <p>리뷰가 없습니다.</p>

@@ -47,9 +47,9 @@ const MovieCard = ({ movie }) => {
     >
       <div className="overlay">
         <h1>{movie.title}</h1>
-        <div onClick={stopPropagation}>
-          <AddButton movie={movie} />
-        </div>
+
+        <AddButton movie={movie} onClick={stopPropagation} />
+
         <div>
           <img
             src={getAgeImageSrc(movie)}

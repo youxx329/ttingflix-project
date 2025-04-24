@@ -1,0 +1,18 @@
+.review-box {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #a59ff8;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 0;
+}

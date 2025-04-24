@@ -8,7 +8,8 @@ const AddButton = ({ movie }) => {
   const { favorites, addFavorite, removeFavorite } = useFavoriteStore();
   const isLiked = favorites.some((item) => item.id === movie.id);
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (e) => {
+    e.stopPropagation(); // 상세페이지로 가는 클릭 막기
     isLiked ? removeFavorite(movie.id) : addFavorite(movie);
   };
 

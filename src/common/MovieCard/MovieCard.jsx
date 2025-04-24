@@ -1,8 +1,8 @@
 import React from 'react';
-import { Badge } from 'react-bootstrap';
 import './MovieCard.style.css';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenreQuery';
 import AddButton from '../AddButton/AddButton';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
@@ -24,6 +24,16 @@ const MovieCard = ({ movie }) => {
     else return '/ratings/12.png'; // or ALL.png
   };
 
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/movies/${movie.id}`);
+  };
+
+  const stopPropagation = (e) => {
+    e.stopPropagation(); // 이벤트 버블링 막기
+  };
+
   return (
     <div
       style={{
@@ -33,10 +43,13 @@ const MovieCard = ({ movie }) => {
           ')',
       }}
       className="movie-card"
+      onClick={handleCardClick}
     >
       <div className="overlay">
         <h1>{movie.title}</h1>
-        <AddButton movie={movie} />
+        <div onClick={stopPropagation}>
+          <AddButton movie={movie} />
+        </div>
         <div>
           <img
             src={getAgeImageSrc(movie)}

@@ -35,14 +35,65 @@ body,
   font-size: 13px;
 }
 
-.btn-orange {
+.search-icon {
   background: none !important;
   border: none !important;
-}
-
-.ico-search {
   width: 22px;
   height: 22px;
+}
+
+.search-bar {
+  position: relative;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.search-bar.active {
+  width: 230px;
+  opacity: 1;
+}
+
+.search-bar input {
+  color: #fff !important;
+}
+
+.search-bar input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.search-icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.form-control::placeholder {
+  color: #b4b3b3 !important;
+  opacity: 1;
+}
+
+.form-control {
+  border: 1px solid #fff !important;
+  background: #141414 !important;
+  border-radius: 0 !important;
+}
+
+input,
+textarea {
+  caret-color: #fff; /* 커서 색상 흰색으로 지정 */
 }
 
 @media (min-width: 1500px) {

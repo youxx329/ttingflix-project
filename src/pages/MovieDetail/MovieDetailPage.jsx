@@ -55,7 +55,7 @@ const MovieDetailPage = () => {
               className="age-rating-icon"
             />
           </p>
-          <p>{movie.overview}</p>
+          <p className='info-overview'>{movie.overview}</p>
           <div className="cast-list">
             <strong>출연:</strong>
             {creditData.cast.slice(0, 3).map((person) => (

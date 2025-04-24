@@ -8,13 +8,16 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { LinkContainer } from 'react-router-bootstrap';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const AppLayout = () => {
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const inputRef = useRef(null);
+  const searchBoxRef = useRef(null);
 
   const searchByKeyword = (event) => {
     event.preventDefault();
@@ -49,6 +52,41 @@ const AppLayout = () => {
   useEffect(() => {
     setExpanded(false);
   }, [location]);
+
+  const toggleSearch = (e) => {
+    e.stopPropagation(); // 👈 이벤트 전파 방지!!
+    setIsSearchOpen((prev) => {
+      const newState = !prev;
+
+      // 닫을 때만 검색어 초기화
+      if (!newState) {
+        setKeyword('');
+      }
+
+      return newState;
+    });
+
+    setTimeout(() => {
+      inputRef.current?.focus(); // 열릴 때는 포커스 주기
+    }, 0);
+  };
+
+  // 인풋 영역 외 클릭 시 자동 닫힘
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        isSearchOpen &&
+        searchBoxRef.current &&
+        !searchBoxRef.current.contains(e.target)
+      ) {
+        setIsSearchOpen(false);
+        setKeyword('');
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isSearchOpen]);
 
   return (
     <div>
@@ -87,19 +125,34 @@ const AppLayout = () => {
               </LinkContainer>
             </Nav>
             <Form className="d-flex" onSubmit={searchByKeyword}>
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                value={keyword}
-                onChange={(event) => setKeyword(event.target.value)}
-              />
-              <Button className="btn-orange" type="submit">
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  className="ico-search"
+              <div
+                className={`search-bar ${isSearchOpen ? 'active' : ''}`}
+                ref={searchBoxRef}
+              >
+                <Form.Control
+                  type="search"
+                  placeholder="제목"
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  ref={inputRef}
                 />
+                {isSearchOpen && keyword && (
+                  <button
+                    className="clear-btn"
+                    type="button"
+                    onClick={() => setKeyword('')}
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+
+              <Button
+                type="button"
+                onClick={toggleSearch}
+                className="search-icon"
+              >
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </Button>
             </Form>
           </Navbar.Collapse>

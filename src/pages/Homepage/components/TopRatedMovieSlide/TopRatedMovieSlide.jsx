@@ -3,7 +3,7 @@ import { useTopRatedMoviesQuery } from '../../../../hooks/useTopRatedMovies';
 import { responsive } from '../../../../constants/responsive';
 import MovieSlider from '../../../../common/MoviesSlider/MovieSlider';
 
-const TopRatedSlide = () => {
+const TopRatedMovieSlide = () => {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -20,4 +20,4 @@ const TopRatedSlide = () => {
   );
 };
 
-export default TopRatedSlide;
+export default TopRatedMovieSlide;

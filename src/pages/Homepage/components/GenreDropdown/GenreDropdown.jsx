@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useMovieGenreQuery } from '../../../hooks/useMovieGenreQuery';
 import './GenreDropdown.style.css';
+import { useMovieGenreQuery } from '../../../../hooks/useMovieGenreQuery';
 
 const GenreDropdown = ({ onSelectGenre }) => {
   const { data } = useMovieGenreQuery();
@@ -19,22 +19,18 @@ const GenreDropdown = ({ onSelectGenre }) => {
   }, []);
 
   return (
-    <div className="genre-dropdown-container" ref={dropdownRef}>
-      <button
-        className="genre-toggle-btn"
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
+    <div className="genre-dropdown-container">
+      <button onClick={() => setIsOpen(!isOpen)} className="genre-toggle-btn">
         장르 ▾
       </button>
-
       {isOpen && (
         <div className="genre-list">
-          {data?.genres?.map((genre) => (
+          {data?.genres.map((genre) => (
             <div
               key={genre.id}
               className="genre-item"
               onClick={() => {
-                onSelectGenre(genre.id); // 👉 장르 ID를 부모로 넘김
+                onSelectGenre(genre); // ✅ 장르 id를 넘겨줘야 해
                 setIsOpen(false);
               }}
             >

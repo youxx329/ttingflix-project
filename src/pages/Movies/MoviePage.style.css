@@ -86,15 +86,7 @@
 }
 
 .sort-tabs button.active {
-  background-color: #9146FF; /* 띵플릭스 컬러 */
+  background-color: #9146ff;
   color: #fff;
   border-color: transparent;
-}
-
-.genre-dropdown {
-  padding: 0.5rem;
-  background-color: #111;
-  color: white;
-  border: 1px solid #888;
-  border-radius: 4px;
 }

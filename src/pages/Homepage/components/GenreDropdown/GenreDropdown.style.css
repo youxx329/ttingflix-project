@@ -1,0 +1,42 @@
+.genre-dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .genre-toggle-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .genre-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #141414;
+    color: white;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 2rem;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    min-width: 240px;
+    border-radius: 0.5rem;
+  }
+  
+  .genre-item {
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.25rem 0;
+    transition: color 0.2s;
+  }
+  
+  .genre-item:hover {
+    color: #e50914;
+  }
+  

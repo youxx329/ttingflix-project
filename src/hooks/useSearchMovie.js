@@ -1,8 +1,14 @@
 import { useQuery } from "@tanstack/react-query"
 import api from "../utils/api"
 
-const fetchSearchMovie = ({keyword, page}) => {
-  return keyword ? api.get(`/search/movie?query=${keyword}&page=${page}`):api.get(`/movie/popular?page=${page}`)
+const fetchSearchMovie = ({keyword, page, genreId }) => {
+  if (keyword) {
+    return api.get(`/search/movie?query=${keyword}&page=${page}`);
+  } else if (genreId) {
+    return api.get(`/discover/movie?with_genres=${genreId}&page=${page}`);
+  } else {
+    return api.get(`/movie/popular?page=${page}`);
+  }
 }
 
 export const useSearchMovieQuery = ({keyword, page}) => {

@@ -67,3 +67,34 @@
   background-color: #7c3ff6;
   border-radius: 7px;
 }
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sort-tabs button {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  color: white;
+  cursor: pointer;
+}
+
+.sort-tabs button.active {
+  background-color: #9146FF; /* 띵플릭스 컬러 */
+  color: #fff;
+  border-color: transparent;
+}
+
+.genre-dropdown {
+  padding: 0.5rem;
+  background-color: #111;
+  color: white;
+  border: 1px solid #888;
+  border-radius: 4px;
+}

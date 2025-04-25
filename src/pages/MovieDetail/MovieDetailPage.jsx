@@ -1,10 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { useMovieDetailQuery } from '../../hooks/useMovieDetailQuery';
 import './MovieDetailPage.style.css';
 import { useMovieCreditsQuery } from '../../hooks/useMovieCredits';
 import { useMovieReviewsQuery } from '../../hooks/useMovieReviewsQuery.js';
+import { useMovieVideosQuery } from '../../hooks/useMovieVideosQuery.js';
+
 import ReviewItem from './ReviewItem.jsx';
+import Modal from 'react-bootstrap/Modal';
+import YouTube from 'react-youtube';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -20,6 +25,20 @@ const MovieDetailPage = () => {
     else return '/ratings/12.png'; // or ALL.png
   };
 
+
+const { data: videoData } = useMovieVideosQuery(id);
+
+// 모달 상태
+const [showModal, setShowModal] = useState(false);
+const handleOpenModal = () => setShowModal(true);
+const handleCloseModal = () => setShowModal(false);
+
+// 유튜브 예고편 key 찾기
+const trailer = videoData?.results?.find(
+  (video) => video.type === 'Trailer' && video.site === 'YouTube'
+);
+const youtubeKey = trailer?.key;
+
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <div>{error.message}</div>;
   if (creditLoading) return <p>출연진 로딩중...</p>;
@@ -34,9 +53,30 @@ const MovieDetailPage = () => {
       >
         <div className="banner-content">
           <h1>{movie.title}</h1>
-          <button className="play-button">
+          <button className="play-button" onClick={handleOpenModal}>
             ▶ <span>재생</span>
           </button>
+
+          <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
+  <Modal.Body style={{ backgroundColor: 'black', padding: 0 }}>
+    {youtubeKey ? (
+      <YouTube
+        videoId={youtubeKey}
+        opts={{
+          width: '100%',
+          height: '400',
+          playerVars: {
+            autoplay: 1,
+          },
+        }}
+      />
+    ) : (
+      <div style={{ color: 'white', padding: '2rem' }}>
+        예고편이 없습니다.
+      </div>
+    )}
+  </Modal.Body>
+</Modal>
         </div>
       </div>
 

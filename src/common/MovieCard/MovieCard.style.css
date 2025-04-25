@@ -64,3 +64,13 @@
   height: auto;
   border-radius: 4px;
 }
+
+.genre-style {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  margin: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 4px;
+  display: inline-block;
+}

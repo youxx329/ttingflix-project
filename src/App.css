@@ -7,13 +7,12 @@ body,
   height: 100%;
   overflow-x: hidden;
 
-
-  background: linear-gradient(180deg, #141414);
+  background: #141414 !important;
   color: #fff;
 }
 
 .layout-main {
-  padding-top: 68px; 
+  padding-top: 68px;
 }
 
 .bg-body-tertiary.my-nav-bg {
@@ -103,16 +102,16 @@ body,
 
 input,
 textarea {
-  caret-color: #fff; 
+  caret-color: #fff;
 }
 
 .mobile-menu {
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 0;
   width: 100%;
-  background-color: #ffffff; 
-  z-index: 999; 
+  background-color: #ffffff;
+  z-index: 999;
 
   padding: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -160,12 +159,12 @@ textarea {
 }
 
 .page-content-wrap {
-  padding-top: 0; 
+  padding-top: 0;
 }
 
 /* 현재 선택된 페이지 (active) */
 .page-item.active .page-link {
-  background-color: #7c3ff6; 
+  background-color: #7c3ff6;
   border-color: #7c3ff6;
   color: #fff;
 }

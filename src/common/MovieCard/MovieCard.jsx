@@ -8,14 +8,14 @@ const MovieCard = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
 
   const showGenre = (genreIdList) => {
-    if (!genreData) return [];
-    const genreNameList = genreIdList.map((id) => {
-      const genreObj = genreData.find((genre) => genre.id === id);
-      return genreObj.name;
-    });
+    if (!genreData?.genres) return [];
 
-    return genreNameList;
+    return genreIdList.map((id) => {
+      const genreObj = genreData.genres.find((genre) => genre.id === id);
+      return genreObj?.name || '';
+    });
   };
+  const genreNames = showGenre(movie.genre_ids);
 
   const getAgeImageSrc = (movie) => {
     const isAdult = movie.adult;

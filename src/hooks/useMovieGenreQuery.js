@@ -7,9 +7,9 @@ const fetchMovieGenre = () => {
 
 export const useMovieGenreQuery = () => {
   return useQuery({
-    queryKey: ['movie-genre'],
-    queryFn: fetchMovieGenre,
-    select: (result) => result.data.genres,
+    queryKey: ['movie-genres'],
+    queryFn: () =>
+      api.get('/genre/movie/list').then((res) => res.data), // 꼭 res.data로!
     staleTime: 300000, // 5분
   });
 };

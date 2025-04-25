@@ -76,17 +76,3 @@
   align-items: center;
   margin-bottom: 1.5rem;
 }
-
-.sort-tabs button {
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  border: 1px solid #aaa;
-  color: white;
-  cursor: pointer;
-}
-
-.sort-tabs button.active {
-  background-color: #9146ff;
-  color: #fff;
-  border-color: transparent;
-}

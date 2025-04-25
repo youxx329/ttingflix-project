@@ -30,7 +30,7 @@ const GenreDropdown = ({ onSelectGenre }) => {
               key={genre.id}
               className="genre-item"
               onClick={() => {
-                onSelectGenre(genre); // ✅ 장르 id를 넘겨줘야 해
+                onSelectGenre(genre); // 장르 id 넘기기기
                 setIsOpen(false);
               }}
             >

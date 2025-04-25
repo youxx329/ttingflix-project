@@ -54,7 +54,7 @@ const AppLayout = () => {
   }, [location]);
 
   const toggleSearch = (e) => {
-    e.stopPropagation(); // 👈 이벤트 전파 방지!!
+    e.stopPropagation(); // 이벤트 전파 방지!!
     setIsSearchOpen((prev) => {
       const newState = !prev;
 

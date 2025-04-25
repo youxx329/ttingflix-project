@@ -1,40 +1,67 @@
-.genre-dropdown-container {
+/* 드롭다운 공통 컨테이너 */
+.genre-dropdown-container,
+.sort-dropdown-container {
   position: relative;
   display: inline-block;
   margin-bottom: 30px;
 }
 
-.genre-toggle-btn {
+/* 버튼 스타일 통일 (장르 버튼, 인기순 버튼) */
+.genre-toggle-btn,
+.sort-toggle-btn {
   background-color: transparent;
   color: white;
   border: 1px solid #ccc;
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.genre-list {
+.genre-toggle-btn:hover,
+.sort-toggle-btn:hover {
+  background-color: #7c3ff6;
+  border-color: #7c3ff6;
+  color: white;
+}
+
+/* 드롭다운 리스트 스타일 (장르 리스트, 인기순 옵션) */
+.genre-list,
+.sort-options {
   position: absolute;
-  top: 100%;
+  /* top: 100%; */
   left: 0;
   background-color: #141414;
   color: white;
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* gap: 0.5rem 2rem; */
+  grid-template-columns: repeat(3, 1fr); /* 장르는 3열 */
   z-index: 999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   min-width: 250px;
+  border: 1px solid #474747;
 }
 
-.genre-item {
+/* 인기순 드롭다운은 옵션 수가 적으니까 세로로만 */
+.sort-options {
+  grid-template-columns: 1fr; /* 인기순은 1열로 정렬 */
+}
+
+.genre-item,
+.sort-item {
   cursor: pointer;
   font-size: 0.95rem;
   padding: 0.25rem 0;
   transition: color 0.2s;
 }
 
-.genre-item:hover {
+.genre-item:hover,
+.sort-item:hover {
   text-decoration: underline;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

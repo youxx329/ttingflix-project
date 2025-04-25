@@ -109,3 +109,9 @@
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
+@media (max-width: 500px) {
+  .movie-info-img {
+    width: 100%;
+  }
+}

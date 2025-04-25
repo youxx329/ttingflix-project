@@ -6,7 +6,7 @@ import GenreDropdown from '../Homepage/components/GenreDropdown/GenreDropdown';
 import ReactPaginate from 'react-paginate';
 import TopRatedMovieSlide from '../Homepage/components/TopRatedMovieSlide/TopRatedMovieSlide.jsx';
 import { useSearchMovieQuery } from '../../hooks/useSearchMovieQuery';
-import { useMovieGenreQuery } from '../../hooks/useMovieGenreQuery'; // ⭐ 장르 데이터 불러오기
+import { useMovieGenreQuery } from '../../hooks/useMovieGenreQuery'; // 장르 데이터 불러오기
 import './MoviePage.style.css';
 
 const MoviePage = () => {

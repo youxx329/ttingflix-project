@@ -9,21 +9,18 @@ const MovieCard = ({ movie }) => {
 
   const showGenre = (genreIdList) => {
     if (!genreData?.genres) return [];
-
     return genreIdList.map((id) => {
       const genreObj = genreData.genres.find((genre) => genre.id === id);
       return genreObj?.name || '';
     });
   };
-  const genreNames = showGenre(movie.genre_ids);
 
   const getAgeImageSrc = (movie) => {
     const isAdult = movie.adult;
-
-    if (isAdult) return '/ratings/19.png';
-    else return '/ratings/12.png'; // or ALL.png
+    return isAdult ? '/ratings/19.png' : '/ratings/12.png';
   };
 
+  const genreNames = showGenre(movie.genre_ids);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -31,38 +28,41 @@ const MovieCard = ({ movie }) => {
   };
 
   const stopPropagation = (e) => {
-    e.stopPropagation(); // 이벤트 버블링 막기
+    e.stopPropagation();
   };
 
   return (
-    <div
-      style={{
-        backgroundImage:
-          'url(' +
-          `https://image.tmdb.org/t/p/original${movie.poster_path}` +
-          ')',
-      }}
-      className="movie-card"
-      onClick={handleCardClick}
-    >
-      <div className="overlay">
-        <h1>{movie.title}</h1>
+    <div className="card-wrapper">
+      <div
+        style={{
+          backgroundImage:
+            'url(' +
+            `https://image.tmdb.org/t/p/original${movie.poster_path}` +
+            ')',
+        }}
+        className="movie-card"
+        onClick={handleCardClick}
+      >
+        <div className="overlay">
+          <h1>{movie.title}</h1>
 
-        <AddButton movie={movie} onClick={stopPropagation} />
+          <AddButton movie={movie} onClick={stopPropagation} />
 
-        <div>
-          <img
-            src={getAgeImageSrc(movie)}
-            alt="관람등급"
-            className="age-rating-icon"
-          />
-        </div>
-        <div className="movie-card-genre">
-          {showGenre(movie.genre_ids).map((name, index) => (
-            <div key={index} className="genre-style">
-              {name}
-            </div>
-          ))}
+          <div>
+            <img
+              src={getAgeImageSrc(movie)}
+              alt="관람등급"
+              className="age-rating-icon"
+            />
+          </div>
+
+          <div className="movie-card-genre">
+            {genreNames.map((name, index) => (
+              <div key={index} className="genre-style">
+                {name}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,140 @@
-.carousel-container {
-  overflow: hidden;
+.movie-slider-block {
 }
 
 .slide-tit {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.custom-carousel-container {
+  position: relative;
+  margin-left: -8px;
+  overflow: visible; 
+}
+
+.carousel-item-padding {
+  /* padding: 0 8px; */
+}
+
+/* fade 효과 */
+.custom-carousel-container::before,
+.custom-carousel-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.custom-carousel-container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(20, 20, 20, 1),
+    rgba(20, 20, 20, 0)
+  );
+}
+
+.custom-carousel-container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(20, 20, 20, 1),
+    rgba(20, 20, 20, 0)
+  );
+}
+
+.react-multi-carousel-list {
+  overflow: visible !important;
+}
+
+.react-multi-carousel-track {
+  position: relative;
+  z-index: 10;
+}
+@media (max-width: 500px) {
+  .movie-slide {
+    margin-top: 0 !important;
+  }
+  .banner-text-area {
+    top: 68%;
+  }
+  .bg-body-tertiary.my-nav-bg {
+    background-color: #000 !important;
+    padding: 0 16px;
+  }
+
+  .navbar-toggler {
+    filter: brightness(300%); /* 햄버거 아이콘 밝게 */
+  }
+  .mobile-menu-collapse {
+    background-color: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    display: block;
+    padding: 20px 0;
+
+    max-height: 80vh; 
+    overflow-y: auto; 
+  }
+
+  .mobile-menu-collapse .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mobile-menu-collapse .nav-link {
+    color: #fff !important;
+    font-size: 18px;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+
+  .mobile-menu-collapse .d-flex {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+
+    width: 100%;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: nowrap; 
+    overflow: hidden; 
+  }
+
+  .search-bar {
+    flex: 1 1 auto;
+    max-width: 70%;
+    margin-right: 8px;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+  }
 }

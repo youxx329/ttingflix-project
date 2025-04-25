@@ -11,7 +11,7 @@
 .custom-carousel-container {
   position: relative;
   margin-left: -8px;
-  overflow: visible; 
+  overflow: visible;
 }
 
 .carousel-item-padding {
@@ -57,8 +57,18 @@
   z-index: 10;
 }
 @media (max-width: 500px) {
+  html,
+  body,
+  #root {
+    background: #000 !important;
+  }
+
   .movie-slide {
-    margin-top: 0 !important;
+    margin-top: 50px !important;
+  }
+
+  .my-nav-color {
+    padding-right: 20px !important;
   }
   .banner-text-area {
     top: 68%;
@@ -82,8 +92,8 @@
     display: block;
     padding: 20px 0;
 
-    max-height: 80vh; 
-    overflow-y: auto; 
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .mobile-menu-collapse .nav {
@@ -109,10 +119,10 @@
 
     width: 100%;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap; 
-    overflow: hidden; 
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
 
   .search-bar {
